@@ -1,0 +1,76 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}{{blog.title}}{% endblock title %}
+{% block main %}
+<div class="my-4 py-3 container-fluid">
+    <div class="text-center">
+        <h1 class="fw-bold fs-1">{{blog.title}}</h1>
+        <p>
+            {% for tag in blog.tags.all %}
+            <a href="{{tag.get_absolute_url}}" style="font-size: 14px;" class="text-uppercase m-2">{{tag.name}}</a>
+            {% endfor %}
+        </p>
+        <hr>
+        <div class="d-flex justify-content-evenly flex-wrap m-3">
+            <p class="m-0">
+                Posted By <a href="https://github.com/jethliya-balaji">Balaji Jethliya</a>
+            </p>
+            <p class="m-0">{{blog.created_at | date:"l, F d, Y" }}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="my-4">
+        <p>
+            {{blog.body | safe}}
+        </p>
+    </div>
+    <hr>
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+        {% if previous_post %}
+        <a href="{{previous_post.get_absolute_url}}">Previous Blog : {{ previous_post.title|slice:"20"}}...</a>
+        {% else %}
+        <span></span>
+        {% endif %}
+        {% if next_post %}
+        <a href="{{next_post.get_absolute_url}}">Next Blog : {{ next_post.title|slice:"20"}}...</a>
+        {% endif %}
+    </div>
+    <!-- comment -->
+    <div>
+        <div class="d-flex border p-3 flex-column rounded my-4 ">
+            <form method="POST">
+                {% csrf_token %}
+                <h3>Comments</h3>
+                {% render_field form.name class="form-control bg-dark text-white my-3 is-valid" placeholder="Name" %}
+                {% render_field form.email class="form-control bg-dark text-white my-3 is-valid" placeholder="Email" %}
+                {% render_field form.body  rows="6" class="form-control bg-dark text-white my-3 is-valid" placeholder="Comment Here"%}
+                <input type="submit" value="Comment" class="btn btn-success float-end">
+            </form>
+        </div>
+        <div>
+            {% for comment in blog.comments.all  %}
+            <div class="d-flex border p-4 flex-column rounded mb-2">
+                <div class="d-flex">
+                    <img src="{% static 'resource\dummy.png' %}" width="70px" height="70px" class="rounded">
+                    <div class="ms-3">
+                        <p class="small mb-1">
+                            <span class="text-muted">{{comment.created_at | timesince}}</span>
+                        </p>
+                        <h6 class="mb-1 mt-1">
+                            {{comment.name}}
+                            <p class="small mt-2"><a href="mailto:myemail@gmail.com"
+                                    target="_blank">{{comment.email}}</a> </p>
+                        </h6>
+                    </div>
+                </div>
+                <p class="mb-0">
+                    {{comment.body}}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock main %}

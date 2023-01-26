@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="{% static 'resource/favicon.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}">
+    <title>{% block title %}{% endblock title %} | Personal Blog | By Balaji Jethliya</title>
+</head>
+
+<body class="line-numbers">
+    <div style="max-width: 64rem;" class="mx-auto px-4">
+        <!-- header -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'homePage' %}">
+                        <div class="d-flex align-items-center justify-between">
+                            <i class='bx bxl-blogger bx-tada bx-rotate-180 bx-md'></i>
+                            <div class="m-2">My Blog</div>
+                        </div>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarColor02">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link {% block home_nav_active %}{% endblock home_nav_active %}" href="{% url 'homePage' %}">Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% block blogs_nav_active %}{% endblock blogs_nav_active %}" href="{% url 'blogsPage' %}">Blogs
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% block tags_nav_active %}{% endblock tags_nav_active %}" href="{% url 'tagsPage' %}">Tags</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% block about_nav_active %}{% endblock about_nav_active %}" href="{% url 'aboutPage' %}">About</a>
+                            </li>
+                            <!--Theme switcher-->
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="#"><i class='bx bxs-moon bx-sm'></i></a>
+                                <a class="nav-link pt-1 pb-0 m-1" href="#"><i class='bx bxs-sun bx-sm'></i></a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- main -->
+        <main>
+            {% block main %}
+            {% endblock main %}
+        </main>
+
+        <!-- footer  -->
+        <footer>
+            <div class="text-center m-3">
+                <p>Made with ❤️ by <a href="https://github.com/jethliya-balaji" target="_blank"><b>Balaji Jethliya</b></a>
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/prism.js' %}"></script>
+</body>
+
+</html>

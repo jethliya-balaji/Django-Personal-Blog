@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block about_nav_active %}active{% endblock about_nav_active %}
+{% block main %}
+<div class="py-3 container-fluid">
+    <div class="my-4">
+        <h1 class="fw-bold">About</h1>
+    </div>
+    <hr>
+
+    <div class="row my-5">
+        <div class="d-flex flex-column align-items-center col-sm-4">
+            <span
+                style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;">
+                <span
+                    style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;">
+                    <img src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27192%27%20height=%27192%27/%3e"
+                        style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;">
+                </span>
+                <img src="{% static 'resource\profile.jpg' %}" class="h-50 w-50 rounded-5"
+                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+            </span>
+            <h3 class="pt-4 pb-2">Balaji Jethliya</h3>
+            <p class="mb-1">
+                Intermediate Django Developer
+            </p>
+            <p>
+                Contact Me Through
+            </p>
+            <div class="flex mb-3">
+                <a target="_blank" href="https://github.com/jethliya-balaji">
+                    <i class='bx bxl-github bx-sm'></i>
+                </a>
+                <a target="_blank" href="https://twitter.com/jethliyabalaji">
+                    <i class='bx bxl-twitter bx-sm'></i>
+                </a>
+                <a target="_blank" href="#">
+                    <i class='bx bxl-linkedin-square bx-sm'></i>
+                </a>
+                <a target="_blank" href="">
+                    <i class='bx bxs-envelope bx-sm'></i>
+                </a>
+            </div>
+        </div>
+        <div class="pt-8 pb-8 col-sm-8">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo voluptate atque laudantium
+                quisquam dignissimos, earum quos officia neque recusandae pariatur?
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur quas accusamus quisquam
+                laboriosam ullam? Pariatur rem vero eius. Excepturi, obcaecati adipisci. Nihil quos
+                distinctio iste voluptates omnis dignissimos, iusto veniam.
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, sequi distinctio
+                accusantium veritatis dolores iusto, excepturi rem aspernatur, quasi impedit magnam iure
+                quae velit quam facere ullam doloremque omnis quibusdam recusandae placeat eos culpa aperiam
+                nihil. Molestias, quas laboriosam. Doloremque?
+        </div>
+    </div>
+</div>
+{% endblock main %}

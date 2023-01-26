@@ -1,0 +1,57 @@
+{% extends 'blog/base.html' %}
+{% block title %}Tag - {{tag.name}}{% endblock title %}
+{% block tags_nav_active %}active{% endblock tags_nav_active %}
+{% block main %}
+<div class="py-3 container-fluid">
+    <div class="my-4">
+        <h1 class="fw-bold mb-3">Blogs With "{{tag.name | upper}}" As Tags</h1>
+        <p>Tags:
+            <span class="text-uppercase m-1">
+                {% for tag in tags %}
+                <a href="{{tag.get_absolute_url}}" style="font-size: 13px;">{{tag.name}}</a>
+                <span>({{ tag.post_count }})</span>
+                {% endfor %}
+            </span>
+        </p>
+
+    </div>
+    <hr>
+
+    <div>
+        {% for post in posts %}
+        <div class="row mx-auto my-5">
+            <div class="col-sm-3">
+                <p>{{post.created_at | date:"F d, Y" }}</p>
+            </div>
+            <div class="col">
+                <a href="{{post.get_absolute_url}}">
+                    <h2>{{post.title}}</h2>
+                </a>
+                <span>
+                    {% for tag in post.tags.all %}
+                    <a href="{{tag.get_absolute_url}}" style="margin-right: 4px; font-size: 13px;"
+                        class="text-uppercase ">{{tag.name}}</a>
+                    {% endfor %}
+                </span>
+                <p class="mt-1">{{post.description}}...</p>
+                <a href="{{post.get_absolute_url}}">Read more →</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+        {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}">Previous</a>
+        {% else %}
+        <a class="nav-link disabled">Previous</a>
+        {% endif %}
+        <p class="m-0">{{ posts.number }} of {{ posts.paginator.num_pages }}</p>
+        {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">Next</a>
+        {% else %}
+        <a class="nav-link disabled">Next</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock main %}

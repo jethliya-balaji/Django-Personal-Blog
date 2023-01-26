@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% block title %}Tags{% endblock title %}
+{% block tags_nav_active %}active{% endblock tags_nav_active %}
+{% block main %}
+<div class="row my-5 align-items-center">
+    <div class="col-sm-4">
+        <h1 class="fw-bold text-center py-3 mx-3" style="border-right: 3px solid lightcyan;">Tags</h1>
+    </div>
+    <div class="d-flex flex-wrap col-sm-8">
+        {% for tag in tags %}
+        <p class="text-uppercase m-3">
+            <a href="{{tag.get_absolute_url}}">{{tag.name}}</a>
+            <span>({{ tag.post_count }})</span>
+        </p>
+        {% empty %}
+        <p class="text-center">
+            Sorry, there are no tags available to display.
+        </p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock main %}
