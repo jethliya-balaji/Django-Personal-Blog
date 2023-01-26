@@ -24,7 +24,7 @@ Django Personal Blog is a basic blog application built using the Django web fram
 
     `python -m venv env`
 
-    `source env/bin/activate`
+    `source env/bin/activate` or `source env/Scripts/activate` or Based on your terminal/operating system. 
 - Install the requirements
 
     `pip install -r requirements.txt`
