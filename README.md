@@ -15,6 +15,8 @@ Django Personal Blog is a basic blog application built using the Django web fram
 
 ## Installation
 
+
+
 - Clone the repository
 
     `https://github.com/jethliya-balaji/Django-Personal-Blog.git`
@@ -26,6 +28,57 @@ Django Personal Blog is a basic blog application built using the Django web fram
 - Install the requirements
 
     `pip install -r requirements.txt`
+
+- Note :
+    1. `.env.example` file is provided in the project root directory as an example of environment variables you need to set before running server.
+
+        ```
+        SECRET_KEY=Django secret key
+        DEBUG=Debug mode, set to TRUE or FALSE
+
+        #### Only required if you are using postgresql ####
+        DB_NAME=Database name
+        DB_USER=Database username
+        DB_PASSWORD=Database password
+        DB_HOST=Database host
+        DB_PORT=Database port
+        ```
+
+        To generate a new key, we can use the `get_random_secret_key()` function present in `django.core.management.utils`. This function returns a 50 character string that consists of random characters. This string can be used as a SECRET_KEY.
+        ```
+        # importing the function from utils
+        from django.core.management.utils import get_random_secret_key
+
+        # generating and printing the SECRET_KEY
+        print(get_random_secret_key())
+        ```
+        Run above code in terminal (same folder as manage.py file with virtual environment active)
+
+    2. Make sure to set up the correct database settings in the settings.py file. Use sqlite3 for local local machine & postgresql while deploying.
+        ```
+
+        # Database
+        # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+
+        # DATABASES = {
+        #     'default': {
+        #         'ENGINE': 'django.db.backends.postgresql',
+        #         'NAME': os.environ.get('DB_NAME'),
+        #         'USER': os.environ.get('DB_USER'),
+        #         'PASSWORD': os.environ.get('DB_PASSWORD'),
+        #         'HOST': os.environ.get('DB_HOST'),
+        #         'PORT': os.environ.get('DB_PORT'),
+        #     }
+        # }
+        ```
+
 - Run migrations
 
     `python manage.py makemigrations`
@@ -35,58 +88,6 @@ Django Personal Blog is a basic blog application built using the Django web fram
 
     `python manage.py runserver`
 - Visit http://localhost:8000 in your web browser to view the application
-
-- Note :
-1. `.env.example` file is provided in the project root directory as an example of environment variables you need to set befor running server.<br>
-    ```
-    
-    SECRET_KEY=Django secret key
-    DEBUG=Debug mode, set to TRUE or FALSE
-
-    #### Only required if you are using postgresql ####
-    DB_NAME=Database name
-    DB_USER=Database username
-    DB_PASSWORD=Database password
-    DB_HOST=Database host
-    DB_PORT=Database port
-    ```
-
-    To generate a new key, we can use the `get_random_secret_key()` function present in `django.core.management.utils`. This function returns a 50 character string that consists of random characters. This string can be used as a SECRET_KEY.
-    ```
-    # importing the function from utils
-    from django.core.management.utils import get_random_secret_key
-
-    # generating and printing the SECRET_KEY
-    print(get_random_secret_key())
-    ```
-    Run above code in terminal (same folder as manage.py file with virtual environment active)
-
-2. Make sure to set up the correct database settings in the settings.py file. Use sqlite3 for local local machine & postgresql while deploying.
-    ```
-    
-    # Database
-    # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': os.environ.get('DB_NAME'),
-    #         'USER': os.environ.get('DB_USER'),
-    #         'PASSWORD': os.environ.get('DB_PASSWORD'),
-    #         'HOST': os.environ.get('DB_HOST'),
-    #         'PORT': os.environ.get('DB_PORT'),
-    #     }
-    # }
-    ```
-
-
 
 
 ## File Structure
