@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'widget_tweaks',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -151,11 +152,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES' : [
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication'
     ],
 
     'DEFAULT_PERMISSION_CLASSES' : [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',    
-    ]
+    ], 
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+SPECTACULAR_SETTINGS = {
+        'TITLE': 'Personal Blog API',
+        'DESCRIPTION': 'API documentation for Personal Blog API a project Build By Balaji Jethliya',
+        'VERSION': '1.0.0',
+        'SERVE_INCLUDE_SCHEMA': False,
+        'COMPONENT_SPLIT_REQUEST': True,
+        'COMPONENT_SPLIT_PATCH': False,
+        'SORT_OPERATIONS': False,
+    }
