@@ -1,7 +1,7 @@
 # Django Personal Blog
 
 Django Personal Blog is a basic blog application built using the Django web framework. It includes features such as displaying blog posts, creating and managing tags, creating and managing comments, pagination, searching, and more. It also uses the TinyMCE rich text editor for creating and editing blog posts. Recently I have added Django Rest Framwork To this Project. You can see the site [Here](https://jethliyabalaji-blogs.up.railway.app/)
-& API [Here](https://jethliyabalaji-blogs.up.railway.app/)
+& API [Here](https://jethliyabalaji-blogs.up.railway.app/api/)
 
 ## Features
 - CRUD functionality for blog posts
